@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Custom animations for dream effects */
+@keyframes twinkle {
+  0% { opacity: 0.1; }
+  100% { opacity: 0.7; }
+}
+
+@keyframes twinkleBright {
+  0% { opacity: 0.4; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes shootingStar {
+  0% { 
+    transform: translate(0, 0) rotate(45deg) scale(1); 
+    opacity: 0;
+  }
+  2% { 
+    transform: translate(20px, 20px) rotate(45deg) scale(1);
+    opacity: 1;
+  }
+  4% { 
+    transform: translate(40px, 40px) rotate(45deg) scale(1);
+    opacity: 0;
+    box-shadow: 0 0 0 transparent;
+  }
+  100% { 
+    transform: translate(40px, 40px) rotate(45deg) scale(1);
+    opacity: 0;
+  }
+}
+
+.cloud-float-1 {
+  animation: cloudFloat1 30s infinite alternate ease-in-out;
+}
+
+.cloud-float-2 {
+  animation: cloudFloat2 24s infinite alternate ease-in-out;
+}
+
+.cloud-float-3 {
+  animation: cloudFloat3 34s infinite alternate ease-in-out;
+}
+
+@keyframes cloudFloat1 {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(30px) translateY(10px); }
+  100% { transform: translateX(-10px) translateY(-5px); }
+}
+
+@keyframes cloudFloat2 {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-20px) translateY(15px); }
+  100% { transform: translateX(15px) translateY(-10px); }
+}
+
+@keyframes cloudFloat3 {
+  0% { transform: translateX(0) translateY(0); }
+  30% { transform: translateX(15px) translateY(-8px); }
+  70% { transform: translateX(-25px) translateY(12px); }
+  100% { transform: translateX(5px) translateY(-5px); }
+}

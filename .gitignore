@@ -1,0 +1,21 @@
+# Node.js
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.pyc
+instance/
+.env
+
+# VSCode
+.vscode/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Models and large files
+dream_index.faiss
+*.safetensors
