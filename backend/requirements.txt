@@ -1,8 +1,20 @@
-torch
-transformers
-accelerate
-optimum
-auto-gptq
-bitsandbytes
-fastapi
-uvicorn
+# Core AI model dependencies
+torch>=2.1.0
+transformers>=4.38.0
+accelerate>=0.25.0
+optimum>=1.16.0
+auto-gptq>=0.5.1
+bitsandbytes>=0.41.3.post2
+
+# Embedding & vector search
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4
+# ถ้าใช้ GPU และอยากเปลี่ยน: ใช้ faiss-gpu แทน faiss-cpu
+
+# Data handling
+pandas>=2.0.0
+
+# FastAPI & server
+fastapi>=0.110.0
+uvicorn[standard]>=0.23.2
+

@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
 import uvicorn
+import numpy as np
 
 # --- Setup FastAPI ---
 app = FastAPI()
@@ -15,7 +16,7 @@ app = FastAPI()
 # Enable CORS for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # ใส่ URL frontend จริงเช่น ["http://localhost:3000"]
+    allow_origins=["*"],  # หรือใส่ URL frontend จริงเช่น ["http://localhost:3000"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -41,11 +42,26 @@ terms = dream_data["Term"].tolist()
 index = faiss.read_index('dream_index.faiss')
 embedder = SentenceTransformer('all-MiniLM-L6-v2')
 
+def normalize(vecs):
+    return vecs / np.linalg.norm(vecs, axis=1, keepdims=True)
 # --- Retrieval Function ---
-def retrieve_snippet(query, k=1):
+def retrieve_snippet(query, k=3, threshold=0.75):
     query_embedding = embedder.encode([query], convert_to_numpy=True)
+    query_embedding = normalize(query_embedding)
+
     distances, indices = index.search(query_embedding, k)
-    return [texts[i] for i in indices[0]]
+    results = []
+
+    for dist, idx in zip(distances[0], indices[0]):
+        similarity = 1 - dist  # ถ้าใช้ FAISS L2 flat → ต้อง normalize ก่อนถึงจะเป็น cosine
+        if similarity >= threshold:
+            results.append(texts[idx])
+
+    if results:
+        return results
+    else:
+        return ["ขออภัย ฉันไม่พบคำอธิบายที่เกี่ยวข้องในฐานข้อมูลค่ะ 💤"]
+
 
 # --- Asking Function ---
 def ask_query(query: str):
