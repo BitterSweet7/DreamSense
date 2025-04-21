@@ -92,7 +92,7 @@ def ask_query(query: str, character: str = "formal"):
             "- Add emojis throughout (🌙, 💭, 🌌, 🐍, 🦋) when they relate to specific dream elements or emotions. \n"
             "- Use line breaks or bullets to make your response more readable and friendly. \n"
         )
-    elif character == "indie":
+    elif character == "Relax":
         system_prompt = (
             "You are a quirky, artistic dream interpreter with an indie vibe. \n"
             "Your goal is to offer a unique, creative interpretation that challenges conventional thinking.\n"

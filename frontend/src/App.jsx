@@ -105,7 +105,7 @@ export default function App() {
       intro: "Share your dream, and I'll help you understand its meaning",
       analyzing: "Analyzing your dream...",
       formal: "Formal",
-      indie: "Indie"
+      indie: "Relax"
     },
     th: {
       placeholder: "อธิบายความฝันของคุณที่นี่...",
@@ -115,7 +115,7 @@ export default function App() {
       intro: "แบ่งปันความฝันของคุณ และเราจะช่วยคุณเข้าใจความหมายของมัน",
       analyzing: "กำลังวิเคราะห์ความฝันของคุณ...",
       formal: "ทางการ",
-      indie: "อินดี้"
+      indie: "ชิล"
     }
   };
 
